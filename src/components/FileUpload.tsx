@@ -1,4 +1,4 @@
-import { Music } from "lucide-react";
+import { Music, X } from "lucide-react";
 import React, { useCallback, useState } from "react";
 
 // Props for file upload
@@ -7,6 +7,7 @@ interface FileUploadProps {
   onShowModal?: (title: string, message: string) => void;
   acceptedTypes?: string;
   maxSize?: number;
+  disabled?: boolean;
 }
 
 function FileUpload({
@@ -14,6 +15,7 @@ function FileUpload({
   onShowModal,
   acceptedTypes = "audio/*, .mp3, .wav",
   maxSize = 10,
+  disabled = false,
 }: FileUploadProps) {
   // Set states for dragging and selected file
   const [isDragging, setIsDragging] = useState(false);
@@ -84,8 +86,26 @@ function FileUpload({
     }
   };
 
+  // Handler for removing the audio file
+  const handleRemoveFile = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const fileInput = document.getElementById(
+      "file-upload"
+    ) as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = "";
+    }
+
+    setSelectedFile(null);
+    onFileSelect(null);
+  };
+
   return (
-    <div className="w-full">
+    <div
+      className={`w-full ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+    >
       {/* Actual input for the file */}
       <input
         type="file"
@@ -93,24 +113,37 @@ function FileUpload({
         onChange={handleFileInputChange}
         className="hidden"
         id="file-upload"
+        disabled={disabled}
       />
 
       {/* Label instructions */}
       <label
-        htmlFor="file-upload"
+        htmlFor={disabled ? "" : "file-upload"}
         className={`
-          border-2 border-dashed rounded-lg p-8 sm:p-12 md:p-16 text-center cursor-pointer transition-all duration-200 block min-h-48 sm:min-h-52 md:min-h-60 h-48 sm:h-52 md:h-60
+          border-2 border-dashed rounded-lg p-8 sm:p-12 md:p-16 text-center transition-all duration-200 block min-h-48 sm:min-h-52 md:min-h-60 h-48 sm:h-52 md:h-60
           ${
             isDragging
               ? "border-blue-500 bg-blue-500/10"
               : "border-gray-600 hover:border-gray-500"
-          }
+          } 
+          ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
         `}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <div className="flex flex-col items-center space-y-3">
+        <div className="flex flex-col items-center space-y-3 relative">
+          {selectedFile && (
+            <button
+              onClick={handleRemoveFile}
+              className="absolute -top-12 -right-12 hover:bg-blue-custom hover:cursor-pointer rounded-full p-1 transition-colors z-10"
+              aria-label="Remove file"
+              type="button"
+            >
+              <X className="w-4 h-4 text-white" />
+            </button>
+          )}
+
           <Music className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
           <div className="text-gray-300">
             {selectedFile ? (
