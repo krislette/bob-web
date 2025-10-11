@@ -45,12 +45,20 @@ const API_BASE_URL =
 
 export const bachOrBotApi = {
   async predict(
-    audioFile: File,
+    audioSource: File | string,
     lyrics: string
   ): Promise<ApiResponse<PredictionResult>> {
     const formData = new FormData();
-    formData.append("audio_file", audioFile);
     formData.append("lyrics", lyrics);
+
+    // Check if audioSource is a File or string
+    if (typeof audioSource === "string") {
+      // It's a YouTube URL
+      formData.append("youtube_url", audioSource);
+    } else {
+      // It's a File
+      formData.append("audio_file", audioSource);
+    }
 
     const response = await fetch(`${API_BASE_URL}/api/v1/predict`, {
       method: "POST",
@@ -58,19 +66,30 @@ export const bachOrBotApi = {
     });
 
     if (!response.ok) {
-      throw new Error(`Prediction failed: ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        errorData.detail || `Prediction failed: ${response.statusText}`
+      );
     }
 
     return response.json();
   },
 
   async explain(
-    audioFile: File,
+    audioSource: File | string,
     lyrics: string
   ): Promise<ApiResponse<ExplanationResult>> {
     const formData = new FormData();
-    formData.append("audio_file", audioFile);
     formData.append("lyrics", lyrics);
+
+    // Check if audioSource is a File or string
+    if (typeof audioSource === "string") {
+      // It's a YouTube URL
+      formData.append("youtube_url", audioSource);
+    } else {
+      // It's a File
+      formData.append("audio_file", audioSource);
+    }
 
     const response = await fetch(`${API_BASE_URL}/api/v1/explain`, {
       method: "POST",
@@ -78,7 +97,10 @@ export const bachOrBotApi = {
     });
 
     if (!response.ok) {
-      throw new Error(`Explanation failed: ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        errorData.detail || `Explanation failed: ${response.statusText}`
+      );
     }
 
     return response.json();
