@@ -26,7 +26,9 @@ function LyricsUpload({ onLyricsChange }: LyricsUploadProps) {
       <textarea
         value={lyrics}
         onChange={handleTextAreaChange}
-        className="border boder-2 border-color w-full min-h-48 sm:min-h-52 md:min-h-60 rounded-lg bg-black-dark text-white placeholder-gray-300 text-sm resize-none p-3 sm:p-4"
+        className="border-color border-2 border-gray-700 w-full min-h-48 sm:min-h-52 md:min-h-60 rounded-lg bg-black-dark
+          text-white placeholder-gray-500 text-sm resize-none focus:outline-none focus:border-gray-500 
+          hover:border-gray-500 p-3 sm:p-4"
         placeholder="For example:
 Just one more tear to cry
 One teardrop from my eye
