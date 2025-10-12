@@ -16,7 +16,7 @@ interface ResultsMainProps {
 function ResultsMain({ prediction, explanation, fileName }: ResultsMainProps) {
   const navigate = useNavigate();
 
-  const confidenceScore = prediction?.probability || 0;
+  const confidenceScore = Math.round(prediction?.probability || 0);
   const classification = prediction?.label || "Unknown";
 
   const handleAnalyze = () => {
