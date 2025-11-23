@@ -54,8 +54,8 @@ Bach or Bot Web is the frontend interface for the Bach or Bot machine learning s
   <li><a href="#usage">Usage</a></li>
   <li><a href="#deployment">Deployment</a></li>
   <li><a href="#contributing">Contributing</a></li>
-  <li><a href="#license">License</a></li>
   <li><a href="#contact">Contact</a></li>
+  <li><a href="#license">License</a></li>
 </ol>
 
 ### Features
@@ -90,14 +90,17 @@ Bach or Bot Web is the frontend interface for the Bach or Bot machine learning s
 <img width="1365" height="736" alt="image" src="https://github.com/user-attachments/assets/4e346231-b26f-4f9b-bfaa-635fb8d11d12" />
 
 ### Inputs
+
 <img width="1365" height="736" alt="image" src="https://github.com/user-attachments/assets/2578c0ea-fc97-4994-a624-61d492bdce14" />
 <img width="1365" height="736" alt="image" src="https://github.com/user-attachments/assets/2076d4cd-5a38-4352-a0d9-26205b527f7f" />
 
 ### Loading Screen
+
 <img width="1365" height="737" alt="image" src="https://github.com/user-attachments/assets/952c72b2-a833-4951-8788-7ee396d42e08" />
 <img width="1365" height="735" alt="image" src="https://github.com/user-attachments/assets/1ffe471a-098c-439e-b091-38c50c237810" />
 
 ### Results Page
+
 <img width="1365" height="736" alt="image" src="https://github.com/user-attachments/assets/4163c059-3d3b-4a3c-936b-1c1f1473b719" />
 <img width="1365" height="736" alt="image" src="https://github.com/user-attachments/assets/64b87f96-f2ef-4969-9761-56c40ddbf24f" />
 
