@@ -164,7 +164,7 @@ Bach or Bot Web is the frontend interface for the Bach or Bot machine learning s
 2. Click on the audio upload area or drag and drop an audio file
 3. Supported formats: MP3 and WAV
 4. Paste or type the song lyrics in the text area
-5. Click "Analyze Results" to submit
+5. Click "Analyze Music" to submit
 6. Wait for the analysis to complete
 7. View the classification result with confidence score
 8. Review the classification results and explanations
@@ -253,7 +253,7 @@ For questions, suggestions, or collaboration inquiries, please reach out through
 **Related Projects:**
 
 - [Bach or Bot Model](https://github.com/krislette/bach-or-bot) - The main machine learning system
-- [Live Demo](https://bach-or-bot-tool.vercel.app/) - Try the application online
+- [Live Demo](https://bach-or-bot.vercel.app/) - Try the application online
 
 <!-- LICENSE -->
 
